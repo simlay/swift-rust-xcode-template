@@ -1,0 +1,6 @@
+[template]
+include = [
+    "Cargo.toml",
+    "swift-rust-xcode-template.xcodeproj/project.pbxproj",
+    "rename.sh",
+]
