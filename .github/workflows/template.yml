@@ -1,0 +1,25 @@
+name: Rust
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos
+    steps:
+    - name: Install stable rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: default
+        toolchain: stable
+        target: x86_64-apple-ios
+
+    - name: install cargo-generate
+      run: cargo install cargo-generate
+
+    - name: run cargo-generate
+      run: |
+          cargo generate --git https://github.com/simlay/swift-rust-xcode-template --name my-test-app
+          cd my-test-app
+          ./rename.sh
+          xcodebuild -target my-test-app -configuration Debug -scheme my-test-app -sdk iphonesimulator13.2
