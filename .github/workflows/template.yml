@@ -17,6 +17,9 @@ jobs:
     - name: install cargo-generate
       run: cargo install cargo-generate
 
+    - name: install cargo-lipo
+      run: cargo install cargo-lipo
+
     - name: run cargo-generate
       run: |
           cargo generate --git https://github.com/simlay/swift-rust-xcode-template --name my-test-app
