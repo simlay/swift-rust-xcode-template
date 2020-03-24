@@ -3,7 +3,7 @@ use std::os::raw::{c_char};
 use std::ffi::CString;
 
 
-/// `FfiStr`, from the `ffi-support` crate, makes passing C-style (null-terminated) strings a little more convenient
+/// [`FfiStr`], from the `ffi-support` crate, makes passing C-style (null-terminated) strings a little more convenient
 /// and a little safer. The `to` and `name` variables here cannot outlive the call to `rust_hello`.
 #[no_mangle]
 pub extern fn rust_hello(to: FfiStr) -> *mut c_char {

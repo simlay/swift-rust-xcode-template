@@ -1,3 +1,5 @@
+# The available options can be found at https://github.com/eqrion/cbindgen/blob/master/docs.md
+
 language = "C"
 
 [fn]
