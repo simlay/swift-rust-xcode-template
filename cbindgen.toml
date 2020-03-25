@@ -1,0 +1,6 @@
+# The available options can be found at https://github.com/eqrion/cbindgen/blob/master/docs.md
+
+language = "C"
+
+[fn]
+swift_name_macro = "NS_SWIFT_NAME"

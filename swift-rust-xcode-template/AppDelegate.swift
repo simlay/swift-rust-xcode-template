@@ -10,14 +10,14 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let result = rust_hello("world")
-        let swift_result = String(cString: result!)
-        rust_hello_free(UnsafeMutablePointer(mutating: result))
+        let salutation = "world".withCString { name in
+            let cString = rust_hello(name)
+            let string = String(cString: cString)
+            free_rust_string(cString)
+            return string
+        }
         print(swift_result)
 
         let swiftCallback : @convention(c) (Int32) -> Int32 = {
@@ -43,7 +43,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
